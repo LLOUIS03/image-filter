@@ -29,19 +29,11 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   /**************************************************************************** */
   //! END @TODO1
-  app.get("/filteredimage", async (req, res) =>{
+  app.get("/filteredimage", async (req: express.Request, res: express.Response) =>{
     const image_url = req.query.image_url
     // validate the images
     if (!image_url) {
       return res.status(400).send({message: 'Invalid url parameter'})
-    }
-
-    const options = {      
-      dotfiles: 'deny',
-      headers: {
-        'x-timestamp': Date.now(),
-        'x-sent': true
-      }
     }
 
     // filter the images on the server
@@ -53,17 +45,12 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       await deleteLocalFiles([filterPath])
     }, 4000)
 
-
-    
-    // delete the path
-    // await deleteLocalFiles([filterPath])
-
     return res    
   })
   
   // Root Endpoint
   // Displays a simple message to the user
-  app.get( "/", async ( req, res ) => {
+  app.get( "/", async (req: express.Request, res: express.Response) => {
     res.send("try GET /filteredimage?image_url={{}}")
   } );
   
