@@ -41,4 +41,7 @@ If you're feeling up to it, refactor the course RESTapi to make a request to you
 ### Custom Domain Name
 
 Add your own domain name and have it point to the running services (try adding a subdomain name to point to the processing server)
-http://lldev-image-filter-str-code-dev.us-east-1.elasticbeanstalk.com/filteredimage> !NOTE: Domain names are not included in AWS’ free tier and will incur a cost.
+
+```typescript
+http://lldev-image-filter-str-code-dev.us-east-1.elasticbeanstalk.com/filteredimage>
+```
