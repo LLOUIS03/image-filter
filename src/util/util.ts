@@ -17,10 +17,9 @@ export async function filterImageFromURL(inputURL: string): Promise<string>{
         .resize(256, 256) // resize
         .quality(60) // set JPEG quality
         .greyscale() // set greyscale
-        .write(__dirname+outpath, ()=>{
+        .write(__dirname+outpath, (img)=>{
             resolve(__dirname+outpath);
-        });
-        console.log('__dirname+outpath', __dirname+outpath)        
+        });        
     });
 }
 

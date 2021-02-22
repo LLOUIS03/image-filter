@@ -29,7 +29,6 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   /**************************************************************************** */
   //! END @TODO1
-
   app.get("/filteredimage", async (req, res) =>{
     const image_url = req.query.image_url
     // validate the images
@@ -37,12 +36,27 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       return res.status(400).send({message: 'Invalid url parameter'})
     }
 
-    // filter the images on the server
-    const filterPath = await filterImageFromURL(image_url)
-    res.status(200).sendFile(filterPath)
+    const options = {      
+      dotfiles: 'deny',
+      headers: {
+        'x-timestamp': Date.now(),
+        'x-sent': true
+      }
+    }
 
+    // filter the images on the server
+    const filterPath = await filterImageFromURL(image_url)    
+    res.sendFile(filterPath)
+
+    // set time out to remove the image after the service returns
+    setTimeout(async function () {
+      await deleteLocalFiles([filterPath])
+    }, 4000)
+
+
+    
     // delete the path
-    await deleteLocalFiles([filterPath])
+    // await deleteLocalFiles([filterPath])
 
     return res    
   })

@@ -1,11 +1,11 @@
 branch-defaults:
-  default:
-    environment: image-filter-str-code-lldev-dev
+  dev:
+    environment: lldev-image-filter-str-code-dev
     group_suffix: null
 deploy:
   artifact: ./www/Archive.zip
 global:
-  application_name: image-filter-str-code-lldev
+  application_name: lldev-image-filter-str-code
   branch: null
   default_ec2_keyname: null
   default_platform: Node.js 12 running on 64bit Amazon Linux 2
@@ -16,5 +16,5 @@ global:
   platform_version: null
   profile: null
   repository: null
-  sc: null
+  sc: git
   workspace_type: Application

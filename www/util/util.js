@@ -12,7 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
-const Jimp = require("jimp");
+const Jimp = require('jimp');
+const axios = require('axios');
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
 // returns the absolute path to the local image
@@ -29,7 +30,7 @@ function filterImageFromURL(inputURL) {
                 .resize(256, 256) // resize
                 .quality(60) // set JPEG quality
                 .greyscale() // set greyscale
-                .write(__dirname + outpath, (img) => {
+                .write(__dirname + outpath, () => {
                 resolve(__dirname + outpath);
             });
         }));

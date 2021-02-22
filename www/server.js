@@ -36,7 +36,7 @@ const util_1 = require("./util/util");
     //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
     /**************************************************************************** */
     //! END @TODO1
-    app.get("/filteredimage?image_url={{URL}}", (req, res) => __awaiter(this, void 0, void 0, function* () {
+    app.get("/filteredimage", (req, res) => __awaiter(this, void 0, void 0, function* () {
         const image_url = req.query.image_url;
         // validate the images
         if (!image_url) {
