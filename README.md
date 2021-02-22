@@ -43,5 +43,5 @@ If you're feeling up to it, refactor the course RESTapi to make a request to you
 Add your own domain name and have it point to the running services (try adding a subdomain name to point to the processing server)
 
 ```typescript
-http://lldev-image-filter-str-code-dev.us-east-1.elasticbeanstalk.com/filteredimage>
+http://lldev-image-filter-str-code-dev.us-east-1.elasticbeanstalk.com/filteredimage
 ```
