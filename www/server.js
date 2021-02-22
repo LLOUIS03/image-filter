@@ -42,11 +42,24 @@ const util_1 = require("./util/util");
         if (!image_url) {
             return res.status(400).send({ message: 'Invalid url parameter' });
         }
+        const options = {
+            dotfiles: 'deny',
+            headers: {
+                'x-timestamp': Date.now(),
+                'x-sent': true
+            }
+        };
         // filter the images on the server
         const filterPath = yield util_1.filterImageFromURL(image_url);
-        res.status(200).sendFile(filterPath);
+        res.sendFile(filterPath);
+        // set time out to remove the image after the service returns
+        setTimeout(function () {
+            return __awaiter(this, void 0, void 0, function* () {
+                yield util_1.deleteLocalFiles([filterPath]);
+            });
+        }, 4000);
         // delete the path
-        yield util_1.deleteLocalFiles([filterPath]);
+        // await deleteLocalFiles([filterPath])
         return res;
     }));
     // Root Endpoint
